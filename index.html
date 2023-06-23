@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Gustavs piano-app</title>
     <script src="https://cdn.jsdelivr.net/npm/abcjs@6.0.0/dist/abcjs-basic-min.js"></script>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src='https://unpkg.com/react-router-dom@5.0.0/umd/react-router-dom.min.js'></script>
     <style>
         [data-name="C"] {
             color: blue;
@@ -29,32 +34,53 @@
     </style>
 </head>
 <body>
-    <h1>Gustavs piano-app</h1>
-    
-    <div id="blinka-lilla-stjarna"></div>
-    <div id="spanien"></div>
+    <div id="app"></div>
+    <script type="text/jsx">
+        const Link = ReactRouterDOM.Link
+        const Route = ReactRouterDOM.Route
 
+        const spanienSheetMusic = "X:1\n" +
+        "L:1/4\n" +
+        "K:C\n" +
+        "| C D E2 | C D E2 | D D D D | C2 C2"
 
-    <script>
-        // Sample ABC notation
-        var blinkaLillaStrjarna = "X:1\n" +
-            "T:Blinka lilla stjarna\n" +
+        const blinkaLillaStjarnaSheetMusic = "X:1\n" +
             "L:1/4\n" +
             "K:C\n" +
             "| C C G G | A A G2 | F F E E | D D C2 \n" +
             "| F F E E | D D C2 | F F E E | D D C2 \n" +
             "| C C G G | A A G2 | F F E E | D D C2";
 
-        // Render the sheet music
-        window.ABCJS.renderAbc('blinka-lilla-stjarna', blinkaLillaStrjarna, { scale: 2 });
+        function SheetMusic({title, song}) {
+            React.useEffect(() => {
+                console.log()
+                window.ABCJS.renderAbc('sheet-music', song, { scale: 2 });
+            })
 
-        var spanien = "X:1\n" +
-            "T:Spanien\n" +
-            "L:1/4\n" +
-            "K:C\n" +
-            "| C D E2 | C D E2 | D D D D | C2 C2"
+            return (
+                <div>
+                    <h1>{title}</h1>
+                    <div id="sheet-music">{song}</div>
+                </div>
+            )
+        }
 
-        window.ABCJS.renderAbc('spanien', spanien, { scale: 2 });
+        function HomePage() {
+            return (
+                <ReactRouterDOM.HashRouter>
+                    <ul>
+                        <li><Link to="/blinka-lilla-stjarna">Blinka lilla stjärna</Link></li>
+                        <li><Link to="/spanien">Spanien</Link></li>
+                    </ul>
+
+                    <Route path="/blinka-lilla-stjarna" render={() => <SheetMusic title="Blinka lilla stjärna" song={blinkaLillaStjarnaSheetMusic} />} />
+                    <Route path="/spanien" render={() => <SheetMusic title="Spanien" song={spanienSheetMusic} />} />
+                </ReactRouterDOM.HashRouter>
+            )
+        }
+
+        const appElement = document.getElementById('app');
+        ReactDOM.render(<HomePage />, appElement);
     </script>
 </body>
 </html>
