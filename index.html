@@ -41,22 +41,28 @@
             )
         }
 
-        function HomePage() {
+        function App() {
             return (
                 <ReactRouterDOM.HashRouter>
-                    <ul>
-                        <li><Link to="/blinka-lilla-stjarna">Blinka lilla stjärna</Link></li>
-                        <li><Link to="/spanien">Spanien</Link></li>
-                    </ul>
+                    <div id="header">
+                        <h1>Gustavs Piano App</h1>
+                    </div>
 
-                    <Route path="/blinka-lilla-stjarna" render={() => <SheetMusic title="Blinka lilla stjärna" song={blinkaLillaStjarnaSheetMusic} />} />
-                    <Route path="/spanien" render={() => <SheetMusic title="Spanien" song={spanienSheetMusic} />} />
+                    <div id="content">
+                        <ul>
+                            <li><Link to="/blinka-lilla-stjarna">Blinka lilla stjärna</Link></li>
+                            <li><Link to="/spanien">Spanien</Link></li>
+                        </ul>
+
+                        <Route path="/blinka-lilla-stjarna" render={() => <SheetMusic title="Blinka lilla stjärna" song={blinkaLillaStjarnaSheetMusic} />} />
+                        <Route path="/spanien" render={() => <SheetMusic title="Spanien" song={spanienSheetMusic} />} />
+                    </div>
                 </ReactRouterDOM.HashRouter>
             )
         }
 
         const appElement = document.getElementById('app');
-        ReactDOM.render(<HomePage />, appElement);
+        ReactDOM.render(<App />, appElement);
     </script>
 </body>
 </html>
