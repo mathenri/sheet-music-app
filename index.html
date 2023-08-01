@@ -29,14 +29,39 @@
             "| C C G G | A A G2 | F F E E | D D C2";
 
         function SheetMusic({title, song}) {
+            const [visualObj, setVisualObj] = React.useState(null);
+
             React.useEffect(() => {
-                window.ABCJS.renderAbc('sheet-music', song, { scale: 2 });
-            })
+                var visObj = window.ABCJS.renderAbc('sheet-music', song, { scale: 2 });
+                setVisualObj(visObj)
+            }, [])
+
+            function handlePlaySongButtonClick(e) {
+                var synthControl = new window.ABCJS.synth.SynthController();
+                var controlOptions = {
+                    displayPlay: true
+                };
+                synthControl.load("#audio-control", null, controlOptions);
+                synthControl.disable(true);
+                var midiBuffer = new window.ABCJS.synth.CreateSynth();
+                midiBuffer.init({
+                    visualObj: visualObj[0],
+                    millisecondsPerMeasure: 800, // tempo
+                    options: {}
+                }).then(function () {
+                    synthControl.setTune(visualObj[0], true).then(function (response) {
+                        // document.querySelector(".abcjs-inline-audio").classList.remove("disabled");
+                        console.log("Remove disabled class...")
+                    })
+                });
+            }
 
             return (
                 <div>
                     <h1>{title}</h1>
                     <div id="sheet-music" />
+                    <div id="audio-control" />
+                    <button id="play-song-button" onClick={handlePlaySongButtonClick}>Spela låt!</button>
                 </div>
             )
         }

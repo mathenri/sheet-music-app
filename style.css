@@ -41,6 +41,27 @@ ul {
     margin-top: 10px;
 }
 
+#play-song-button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 400;
+  border: 1px solid #007bff;
+  padding: 8px 12px;
+  font-size: 20px;
+  border-radius: 6px;
+  transition: all 150ms;
+  margin-top: 20px;
+}
+
+#play-song-button:hover {
+  background-color: #004794;
+  border-color: #004794;
+}
+
 [data-name="C"] {
     color: blue;
 }
