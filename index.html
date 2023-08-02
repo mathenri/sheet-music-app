@@ -29,6 +29,7 @@
             "| F F E E | D D C2 | F F E E | D D C2 \n" +
             "| C C G G | A A G2 | F F E E | D D C2";
 
+        // Component for sheet music section
         function SheetMusic({title, song}) {
             const [visualObj, setVisualObj] = React.useState(null);
 
@@ -66,6 +67,7 @@
             )
         }
 
+        // Main component
         function App() {
             return (
                 <ReactRouterDOM.HashRouter>
@@ -74,10 +76,12 @@
                     </div>
 
                     <div id="content">
-                        <ul>
-                            <li><Link to="/blinka-lilla-stjarna">Blinka lilla stjärna ⭐</Link></li>
-                            <li><Link to="/spanien">Spanien 🇪🇸</Link></li>
-                        </ul>
+                        <div id="song-list">
+                            <ul>
+                                <li><Link to="/blinka-lilla-stjarna">Blinka lilla stjärna ⭐</Link></li>
+                                <li><Link to="/spanien">Spanien 🇪🇸</Link></li>
+                            </ul>
+                        </div>
 
                         <Route path="/blinka-lilla-stjarna" render={() => <SheetMusic title="Blinka lilla stjärna ⭐" song={blinkaLillaStjarnaSheetMusic} />} />
                         <Route path="/spanien" render={() => <SheetMusic title="Spanien 🇪🇸" song={spanienSheetMusic} />} />

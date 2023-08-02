@@ -37,12 +37,32 @@ body {
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+    margin-bottom: 60px;
 }
 
-ul {
+#content #song-list {
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+#content ul {
     list-style-type: none;
     padding: 0;
-    margin-top: 10px;
+    margin: 0;
+    font-size: 20px;
+}
+
+#content li {
+    margin-bottom: 10px;
+}
+
+#content a {
+    text-decoration: none;
+    color: rgb(40, 40, 40);
+}
+
+#content a:hover {
+    color: black;
 }
 
 #play-song-button {
