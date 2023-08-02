@@ -78,13 +78,19 @@
                     <div id="content">
                         <div id="song-list">
                             <ul>
-                                <li><Link to="/blinka-lilla-stjarna">Blinka lilla stjärna ⭐</Link></li>
-                                <li><Link to="/spanien">Spanien 🇪🇸</Link></li>
+                                <li>
+                                    <Link to="/blinka-lilla-stjarna">Blinka lilla stjärna</Link>
+                                    <img src="star.png" alt="Link Icon" />
+                                </li>
+                                <li>
+                                    <Link to="/spanien">Spanien</Link>
+                                    <img src="spanish-flag.png" alt="Link Icon" />
+                                </li>
                             </ul>
                         </div>
 
-                        <Route path="/blinka-lilla-stjarna" render={() => <SheetMusic title="Blinka lilla stjärna ⭐" song={blinkaLillaStjarnaSheetMusic} />} />
-                        <Route path="/spanien" render={() => <SheetMusic title="Spanien 🇪🇸" song={spanienSheetMusic} />} />
+                        <Route path="/blinka-lilla-stjarna" render={() => <SheetMusic title="Blinka lilla stjärna" song={blinkaLillaStjarnaSheetMusic} />} />
+                        <Route path="/spanien" render={() => <SheetMusic title="Spanien" song={spanienSheetMusic} />} />
                     </div>
                 </ReactRouterDOM.HashRouter>
             )
