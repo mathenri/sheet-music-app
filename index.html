@@ -8,6 +8,7 @@
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script src='https://unpkg.com/react-router-dom@5.0.0/umd/react-router-dom.min.js'></script>
+    <script src='songs.js'></script>
     <link href="style.css" rel="stylesheet" type="text/css">
     <link href="abcjs-audio.css" rel="stylesheet" type="text/css">
 </head>
@@ -16,18 +17,6 @@
     <script type="text/babel">
         const Link = ReactRouterDOM.Link
         const Route = ReactRouterDOM.Route
-
-        const spanienSheetMusic = "X:1\n" +
-        "L:1/4\n" +
-        "K:C\n" +
-        "| C D E2 | C D E2 | D D D D | C2 C2"
-
-        const blinkaLillaStjarnaSheetMusic = "X:1\n" +
-            "L:1/4\n" +
-            "K:C\n" +
-            "| C C G G | A A G2 | F F E E | D D C2 \n" +
-            "| F F E E | D D C2 | F F E E | D D C2 \n" +
-            "| C C G G | A A G2 | F F E E | D D C2";
 
         // Component for sheet music section
         function SheetMusic({title, song}) {
@@ -48,7 +37,7 @@
                 var midiBuffer = new window.ABCJS.synth.CreateSynth();
                 midiBuffer.init({
                     visualObj: visualObj[0],
-                    millisecondsPerMeasure: 800, // tempo
+                    millisecondsPerMeasure: 400, // tempo
                     options: {}
                 }).then(function () {
                     synthControl.setTune(visualObj[0], true).then(function (response) {
@@ -89,8 +78,8 @@
                             </ul>
                         </div>
 
-                        <Route path="/blinka-lilla-stjarna" render={() => <SheetMusic title="Blinka lilla stjärna" song={blinkaLillaStjarnaSheetMusic} />} />
-                        <Route path="/spanien" render={() => <SheetMusic title="Spanien" song={spanienSheetMusic} />} />
+                        <Route path="/blinka-lilla-stjarna" render={() => <SheetMusic title="Blinka lilla stjärna" song={blinkaLillaStjarnaSong} />} />
+                        <Route path="/spanien" render={() => <SheetMusic title="Spanien" song={spanienSong} />} />
                     </div>
                 </ReactRouterDOM.HashRouter>
             )
