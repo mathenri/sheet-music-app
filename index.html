@@ -75,11 +75,16 @@
                                     <Link to="/spanien">Spanien</Link>
                                     <img src="spanish-flag.png" alt="Link Icon" />
                                 </li>
+                                <li>
+                                    <Link to="/pokemon">Pokémon</Link>
+                                    <img src="pikachu.png" alt="Link Icon" />
+                                </li>
                             </ul>
                         </div>
 
                         <Route path="/blinka-lilla-stjarna" render={() => <SheetMusic title="Blinka lilla stjärna" song={blinkaLillaStjarnaSong} />} />
                         <Route path="/spanien" render={() => <SheetMusic title="Spanien" song={spanienSong} />} />
+                        <Route path="/pokemon" render={() => <SheetMusic title="Pokémon" song={pokemonSong} />} />
                     </div>
                 </ReactRouterDOM.HashRouter>
             )
